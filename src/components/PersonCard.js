@@ -3,29 +3,31 @@ import React, { Component } from "react";
 class PersonCard extends Component {
   constructor(props) {
     super(props);
+    const { firstName, lastName, age, hairColor } = this.props;
     this.state = {
-      firstName: this.props.firstName,
-      lastName: this.props.lastName,
-      age: this.props.age,
-      hairColor: this.props.hairColor,
+      firstName: firstName,
+      lastName: lastName,
+      age: age,
+      hairColor: hairColor,
     };
   }
 
-  addAge = () => {
-    this.setState({ age: this.state.age + 1 });
-    console.log(this.state.age);
-  };
-
   render() {
+    const { firstName, lastName, age, hairColor } = this.state;
+    const addAge = () => {
+      this.setState({ age: age + 1 });
+      console.log(age);
+    };
+
     return (
       <div>
         <h2>
-          {this.state.lastName}, {this.state.firstName}
+          {lastName}, {firstName}
         </h2>
-        <p>Age: {this.state.age}</p>
-        <p>Hair Color: {this.state.hairColor}</p>
-        <button onClick={this.addAge}>
-          Birthday Button for {this.state.firstName} {this.state.lastName}
+        <p>Age: {age}</p>
+        <p>Hair Color: {hairColor}</p>
+        <button onClick={addAge}>
+          Birthday Button for {firstName} {lastName}
         </button>
       </div>
     );
